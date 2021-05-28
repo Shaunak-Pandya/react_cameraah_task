@@ -8,7 +8,7 @@ const layout = {
     span: 8,
   },
   wrapperCol: {
-    span: 12,
+    span: 8,
   },
 };
 const tailLayout = {
@@ -80,7 +80,7 @@ const ResetPassword = () => {
             Submit
           </Button>
         </Form.Item>
-        <Link to='/password-forgot'>Forgot Password?</Link>
+        <Link to="/password-forgot">Forgot Password?</Link>
       </Form>
     </div>
   );

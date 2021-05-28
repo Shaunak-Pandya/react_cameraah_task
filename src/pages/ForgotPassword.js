@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Link, useParams } from "react-router-dom";
+// import { Link, useParams } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 
 const layout = {
@@ -8,7 +8,7 @@ const layout = {
     span: 8,
   },
   wrapperCol: {
-    span: 12,
+    span: 8,
   },
 };
 const tailLayout = {
@@ -25,10 +25,9 @@ const ForgotPassword = () => {
     if (values.answer === loggedUserData.security_answer) {
       loggedUserData.password = values.new_password;
       localStorage.setItem(values.email, JSON.stringify(loggedUserData));
-      setMessage('Password Changed Successfully')
-    }
-    else {
-        setMessage('You entered wrong answer of Security Question')
+      setMessage("Password Changed Successfully");
+    } else {
+      setMessage("You entered wrong answer of Security Question");
     }
   };
   const onFinishFailed = (errorInfo) => {

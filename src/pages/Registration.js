@@ -8,7 +8,7 @@ const layout = {
     span: 8,
   },
   wrapperCol: {
-    span: 12,
+    span: 8,
   },
 };
 const tailLayout = {
@@ -20,18 +20,23 @@ const tailLayout = {
 
 const Registration = (props) => {
   const [message, setMessage] = useState("");
+  const [confirmPassError, setConfirmPassError] = useState(null);
   const onFinish = (values) => {
-    for (let key in localStorage) {
-      if (key === values.email) {
-        setMessage("User Already Exists, Please use a different Email");
-        break;
-      } else {
-        console.log("Success:", values);
-        localStorage.setItem(values.email, JSON.stringify(values));
-        localStorage.setItem("isLoggedIn", true);
-        localStorage.setItem("currentUser", values.email);
-        props.history.push("/");
+    if (values.password === values.con_password) {
+      for (let key in localStorage) {
+        if (key === values.email) {
+          setMessage("User Already Exists, Please use a different Email");
+          break;
+        } else {
+          console.log("Success:", values);
+          localStorage.setItem(values.email, JSON.stringify(values));
+          localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("currentUser", values.email);
+          props.history.push("/");
+        }
       }
+    } else {
+      setConfirmPassError("Please enter both passwords same");
     }
   };
 
@@ -47,8 +52,6 @@ const Registration = (props) => {
       <Form
         {...layout}
         name="registration"
-        // initialValues={{
-        // }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
@@ -71,7 +74,8 @@ const Registration = (props) => {
           rules={[
             {
               required: true,
-              message: "Please input your email!",
+              type: "email",
+              message: "Valid email pattern is required!",
             },
           ]}
         >
@@ -90,7 +94,7 @@ const Registration = (props) => {
         >
           <Input.Password />
         </Form.Item>
-
+        <h4 style={{ color: "red" }}>{confirmPassError}</h4>
         <Form.Item
           label="Confirm Password"
           name="con_password"
@@ -103,12 +107,12 @@ const Registration = (props) => {
         >
           <Input.Password />
         </Form.Item>
+
         <h4>Security Question</h4>
         <h5>What's your favorite Pet animal?</h5>
         <Form.Item
           label="Answer"
           name="security_answer"
-          placeholder="example - dog or cat or pig"
           rules={[
             {
               required: true,

@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
 import { Link } from "react-router-dom";
 import { Form, Input, Button } from "antd";
-
 
 //For Design Purposes
 const layout = {
@@ -10,7 +9,7 @@ const layout = {
     span: 8,
   },
   wrapperCol: {
-    span: 12,
+    span: 8,
   },
 };
 const tailLayout = {
@@ -21,7 +20,7 @@ const tailLayout = {
 };
 
 const Login = (props) => {
-  const [needRegistration, setNeedRegistration] = useState("")
+  const [needRegistration, setNeedRegistration] = useState("");
   const onFinish = (values) => {
     for (let key in localStorage) {
       if (key === values.email) {
@@ -33,13 +32,14 @@ const Login = (props) => {
           props.history.push("/");
         } else {
           console.log("Sorry Password is incorrect");
-          setNeedRegistration("Sorry Password is incorrect")
-          break
+          setNeedRegistration("Sorry Password is incorrect");
+          break;
         }
+      } else {
+        setNeedRegistration(
+          "Email ID is not registered with us, Please Register to continue"
+        );
       }
-      else {
-        setNeedRegistration("Email ID is not registered with us, Please Register to continue")
-    }
     }
   };
 
@@ -50,7 +50,8 @@ const Login = (props) => {
   return (
     <>
       <br></br>
-      <h2 style={{fontWeight:'bold'}}>Login Page</h2>
+      <h2 style={{ fontWeight: "bold" }}>LOGIN PAGE</h2>
+      <hr></hr>
       <Form
         {...layout}
         name="login"
@@ -63,7 +64,8 @@ const Login = (props) => {
           rules={[
             {
               required: true,
-              message: "Please input your email!",
+              type: 'email',
+              message: "Valid Email is required!",
             },
           ]}
         >
@@ -82,14 +84,13 @@ const Login = (props) => {
         >
           <Input.Password />
         </Form.Item>
-        <h4 style={{color:'red'}}>{needRegistration}</h4>
+        <h4 style={{ color: "red" }}>{needRegistration}</h4>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
             LOGIN
           </Button>
         </Form.Item>
         <Link to="/password-forgot">Forgot Password?</Link>
-        
       </Form>
       <h4>
         Not a user? <Link to="/registration">Register Now</Link>
