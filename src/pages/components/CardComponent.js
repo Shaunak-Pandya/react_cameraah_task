@@ -6,13 +6,11 @@ const { Meta } = Card;
 function CardComponent({ cardEmail, cardName }) {
   const history = useHistory();
   const logout = () => {
-    console.log("logged out");
     localStorage.removeItem("currentUser");
     localStorage.setItem("isLoggedIn", false);
     history.push("/login");
   };
   const changePassword = () => {
-    console.log("I can be given some funtionality");
     history.push(`/password-reset/${cardEmail}`);
   };
   return (

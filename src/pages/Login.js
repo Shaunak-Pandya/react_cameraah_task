@@ -28,10 +28,8 @@ const Login = (props) => {
         if (storedData.password === values.password) {
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("currentUser", values.email);
-          console.log("Success");
           props.history.push("/");
         } else {
-          console.log("Sorry Password is incorrect");
           setNeedRegistration("Sorry Password is incorrect");
           break;
         }

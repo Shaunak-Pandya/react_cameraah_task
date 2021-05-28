@@ -28,7 +28,7 @@ const Registration = (props) => {
           setMessage("User Already Exists, Please use a different Email");
           break;
         } else {
-          console.log("Success:", values);
+          // console.log("Success:", values);
           localStorage.setItem(values.email, JSON.stringify(values));
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("currentUser", values.email);

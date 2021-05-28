@@ -28,7 +28,6 @@ const ResetPassword = () => {
       setMessage("You cannot set old password as new one");
     } else {
       if (loggedUserData.password === values.old_password) {
-        console.log(loggedUserData.password);
         loggedUserData.password = values.new_password;
         localStorage.setItem(id, JSON.stringify(loggedUserData));
         setMessage("Password Reset Successfully");

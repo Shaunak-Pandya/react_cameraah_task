@@ -6,15 +6,15 @@ const Home = () => {
   const history = useHistory();
   const checkLoginStatus = localStorage.getItem("isLoggedIn");
   if (checkLoginStatus === false) {
-    console.log("User has logged out");
+    // console.log("User has logged out");
     history.push("/login");
   } else if (checkLoginStatus === null) {
-    console.log("User never logged in");
+    // console.log("User never logged in");
     history.push("/login");
   } else {
     const loggedUser = localStorage.getItem("currentUser");
     if (loggedUser === null) {
-      console.log("No user logged");
+      // console.log("No user logged");
       history.push("/login");
     } else {
       const data = JSON.parse(localStorage.getItem(loggedUser));
