@@ -23,7 +23,6 @@ const Home = () => {
     }
   }
 
-
   return (
     <CardComponent
       cardEmail={email ? email : "Unlogged Email"}

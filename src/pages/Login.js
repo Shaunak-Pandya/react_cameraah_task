@@ -64,7 +64,7 @@ const Login = (props) => {
           rules={[
             {
               required: true,
-              type: 'email',
+              type: "email",
               message: "Valid Email is required!",
             },
           ]}

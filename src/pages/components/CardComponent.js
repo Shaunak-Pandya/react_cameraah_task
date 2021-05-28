@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { Card, Avatar, Button } from "antd";
 const { Meta } = Card;
 
-
 function CardComponent({ cardEmail, cardName }) {
   const history = useHistory();
   const logout = () => {
@@ -15,7 +14,6 @@ function CardComponent({ cardEmail, cardName }) {
   const changePassword = () => {
     console.log("I can be given some funtionality");
     history.push(`/password-reset/${cardEmail}`);
-
   };
   return (
     <div>
