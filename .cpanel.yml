@@ -1,0 +1,4 @@
+deployment:
+tasks:
+  - export DEPLOYPATH=/home/sissvado/repositories/react_frontend_auth_task
+  - /bin/cp -r * $DEPLOYPATH
